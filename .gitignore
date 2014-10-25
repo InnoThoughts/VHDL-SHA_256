@@ -1,3 +1,43 @@
+# =========================
+# Xilinx ISE Files
+# =========================
+# taken from https://gist.github.com/mapedd/2045092
+ 
+*.log
+*.svf
+*.scr
+*.cmd
+*.bak
+*.lso
+*.elf
+*.ace
+*~
+*#
+*.swp
+*.ini
+*.html
+*.vhi
+*.wdb
+*.stx
+*.xmsgs
+*.xreport
+*.exe
+*.cmd_log
+*_beh.prj
+*.ncd
+isim
+db
+incremental_db
+work
+*.cr.mti
+vsim.wlf
+transcript
+webtalk.log
+webtalk_impact.xml
+pepExtractor.prj
+impact.xsl
+impact_impact.xwbt
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -26,7 +66,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
