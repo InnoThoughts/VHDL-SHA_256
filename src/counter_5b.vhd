@@ -25,17 +25,17 @@ architecture Behavioral of counter_5b is
 begin
 
     counter: process(INCREMENT, RST)
-        variable count_v : integer := 0;
+        variable count_v : integer := 31;
     begin
-        if(rising_edge(INCREMENT) and (count_v < 31)) then
-            count_v := count_v + 1;
+        if(rising_edge(INCREMENT) and (count_v > 0)) then
+            count_v := count_v - 1;
         end if;
         
-        if(RST) then
-            count_v := 0;
+        if(RST = '1') then
+            count_v := 31;
         end if;
         
-        COUNT <= STD_LOGIC_VECTOR(to_unsigned(count_v));
+        COUNT <= STD_LOGIC_VECTOR(to_unsigned(count_v, COUNT'length));
         
     end process counter;
 

@@ -50,8 +50,8 @@ begin
 
     count: counter_5b port map
         ( INCREMENT => NEW_KEYCODE,
-          RST => '0',
-          COUNT => count_s);
+          RST       => '0',
+          COUNT     => count_s);
 
     mux: mux_5to32 port map
         ( SEL  => count_s,

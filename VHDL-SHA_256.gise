@@ -21,74 +21,8 @@
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="VHDL-SHA_256.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema">
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="char_register_testbench_beh.prj"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="char_register_testbench_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="char_register_testbench_isim_beh.wdb"/>
-    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
-    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
-  </files>
+  <files xmlns="http://www.xilinx.com/XMLSchema"/>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1415595690" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1415595690">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596386" xil_pn:in_ck="-7732947952043924916" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1415596386">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="src/char_register.vhd"/>
-      <outfile xil_pn:name="src/counter_5b.vhd"/>
-      <outfile xil_pn:name="src/input_module.vhd"/>
-      <outfile xil_pn:name="src/line_register.vhd"/>
-      <outfile xil_pn:name="src/memory_array.vhd"/>
-      <outfile xil_pn:name="src/mux_5to32.vhd"/>
-      <outfile xil_pn:name="src/output_module.vhd"/>
-      <outfile xil_pn:name="src/word_register.vhd"/>
-      <outfile xil_pn:name="testbenches/char_register_testbench.vhd"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596367" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2691147345294447164" xil_pn:start_ts="1415596367">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596367" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-820031389064823312" xil_pn:start_ts="1415596367">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1415595690" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="7811947210094714143" xil_pn:start_ts="1415595690">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596386" xil_pn:in_ck="-7732947952043924916" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1415596386">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="src/char_register.vhd"/>
-      <outfile xil_pn:name="src/counter_5b.vhd"/>
-      <outfile xil_pn:name="src/input_module.vhd"/>
-      <outfile xil_pn:name="src/line_register.vhd"/>
-      <outfile xil_pn:name="src/memory_array.vhd"/>
-      <outfile xil_pn:name="src/mux_5to32.vhd"/>
-      <outfile xil_pn:name="src/output_module.vhd"/>
-      <outfile xil_pn:name="src/word_register.vhd"/>
-      <outfile xil_pn:name="testbenches/char_register_testbench.vhd"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596390" xil_pn:in_ck="-7732947952043924916" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-8136221601660989108" xil_pn:start_ts="1415596386">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="char_register_testbench_beh.prj"/>
-      <outfile xil_pn:name="char_register_testbench_isim_beh.exe"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
-    </transform>
-    <transform xil_pn:end_ts="1415596391" xil_pn:in_ck="266826750061894544" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-1235979249517408359" xil_pn:start_ts="1415596390">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="char_register_testbench_isim_beh.wdb"/>
-      <outfile xil_pn:name="isim.cmd"/>
-    </transform>
-  </transforms>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
 
 </generated_project>

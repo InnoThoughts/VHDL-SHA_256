@@ -27,7 +27,7 @@ architecture Structural of word_register is
         Port (        D : in  STD_LOGIC_VECTOR (7 downto 0);
                      EN : in  STD_LOGIC;
                     CLK : in  STD_LOGIC;
-               CHAR_OUT : out  STD_LOGIC_VECTOR (7 downto 0));
+               CHAR_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
 
 begin

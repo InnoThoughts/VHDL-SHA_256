@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Nate Graff and Kenan Pretzer
--- Module Name:    mux_5to32 - Behavioral
+-- Module Name: mux_5to32 - Behavioral
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -26,7 +26,7 @@ begin
     mux: process(SEL) is
         variable char_num : integer;
     begin
-        char_num := integer(to_unsigned(SEL));
+        char_num := to_integer(unsigned(SEL));
         
         CHAR <= (others => '0');
         CHAR(char_num) <= '1';
