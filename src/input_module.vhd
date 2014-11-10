@@ -32,8 +32,8 @@ architecture input_module_architecture of input_module is
     end component;
     
     component mux_5to32 is
-        Port (  SEL : in  STD_LOGIC_VECTOR (4 downto 0);
-               CHAR : out STD_LOGIC_VECTOR (31 downto 0));
+        Port ( ADDR : in  STD_LOGIC_VECTOR (4 downto 0);
+                SEL : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component memory_array is
@@ -54,8 +54,8 @@ begin
           COUNT     => count_s);
 
     mux: mux_5to32 port map
-        ( SEL  => count_s,
-          CHAR => mem_sel_s);
+        ( ADDR => count_s,
+          SEL  => mem_sel_s);
 
     memory: memory_array port map
         ( CHAR_IN => KEYCODE,

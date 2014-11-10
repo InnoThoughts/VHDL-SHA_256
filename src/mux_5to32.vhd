@@ -15,21 +15,21 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity mux_5to32 is
-    Port (  SEL : in  STD_LOGIC_VECTOR (4 downto 0);
-           CHAR : out STD_LOGIC_VECTOR (31 downto 0));
+    Port ( ADDR : in  STD_LOGIC_VECTOR (4 downto 0);
+            SEL : out STD_LOGIC_VECTOR (31 downto 0));
 end mux_5to32;
 
 architecture Behavioral of mux_5to32 is
 
 begin
 
-    mux: process(SEL) is
-        variable char_num : integer;
+    mux: process(ADDR) is
+        variable addr_num : integer;
     begin
-        char_num := to_integer(unsigned(SEL));
+        addr_num := to_integer(unsigned(ADDR));
         
-        CHAR <= (others => '0');
-        CHAR(char_num) <= '1';
+        SEL <= (others => '0');
+        SEL(addr_num) <= '1';
     
     end process mux;
 

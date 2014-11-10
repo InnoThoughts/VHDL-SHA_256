@@ -15,30 +15,30 @@ end mux_5to32_testbench;
 architecture Behavioral of mux_5to32_testbench is 
  
     component mux_5to32
-        Port(  SEL : in  STD_LOGIC_VECTOR (4 downto 0);
-              CHAR : out STD_LOGIC_VECTOR (31 downto 0));
+        Port( ADDR : in  STD_LOGIC_VECTOR (4 downto 0);
+               SEL : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
 
    --inputs
-   signal SEL : STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+   signal ADDR : STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
 
   --outputs
-   signal CHAR : STD_LOGIC_VECTOR (31 downto 0);
+   signal SEL : STD_LOGIC_VECTOR (31 downto 0);
  
 begin
 
     uut: mux_5to32 port map
-        ( SEL  => SEL,
-          CHAR => CHAR);
+        ( ADDR => ADDR,
+          SEL  => SEL);
 
     stim_proc: process
     begin
         wait for 100 ns;  
 
         for I in 0 to 31 loop
-            SEL <= STD_LOGIC_VECTOR(to_unsigned(I, SEL'length));
+            ADDR <= STD_LOGIC_VECTOR(to_unsigned(I, ADDR'length));
             wait for 10 ns;
-            assert(CHAR(I) = '1');
+            assert(SEL(I) = '1');
         end loop;
 
         wait;
