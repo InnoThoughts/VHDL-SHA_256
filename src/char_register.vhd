@@ -29,7 +29,7 @@ begin
         variable D_v : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     begin
         if(rising_edge(CLK) and EN = '1') then
-            D_v <= D;
+            D_v := D;
         end if;
         CHAR_OUT <= D_v;
     end process flop;
