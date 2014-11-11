@@ -1,18 +1,9 @@
 ----------------------------------------------------------------------------------
 -- Nate Graff and Kenan Pretzer
--- Module Name:    input_module - input_module_architecture
+-- Module Name: input_module - Structural
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity input_module is
     Port ( NEW_KEYCODE : in  STD_LOGIC;
@@ -23,7 +14,7 @@ entity input_module is
             STRING_OUT : out STD_LOGIC_VECTOR (255 downto 0));
 end input_module;
 
-architecture input_module_architecture of input_module is
+architecture Structural of input_module is
 
     component counter_5b is
         Port ( INCREMENT : in  STD_LOGIC;
@@ -63,5 +54,5 @@ begin
           CLK     => CLK,
           OUTPUT  => STRING_OUT);
 
-end input_module_architecture;
+end Structural;
 
