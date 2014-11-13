@@ -105,8 +105,8 @@ begin
 			
 			--Extend first 16 words into remaining 48 words of message schedule array.
 			extend_next48: for index1 in 16 to 63 loop
-				s0   := (w(index1-15) ror 7) XOR (w(index1-15) ror 18) XOR (w(index1-15) sra 3);
-				s1   := (w(index1-2) ror 17) XOR (w(index1-2) ror 19) XOR (w(index1-2) sra 10);
+				s0   := (w(index1-15) ror 7) XOR (w(index1-15) ror 18) XOR (w(index1-15) srl 3);
+				s1   := (w(index1-2) ror 17) XOR (w(index1-2) ror 19) XOR (w(index1-2) srl 10);
 				w(index1) := w(index1-16) + s0 + w(index1-7) + s1;
 			end loop extend_next48;
 			
