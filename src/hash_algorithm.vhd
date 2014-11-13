@@ -28,7 +28,6 @@ end Algorithm_Implementation;
 
 architecture Behavioral of Algorithm_Implementation is
 
-begin
 	--Initialize hash values: The hash values are initialized to the first 
 		--32 bits of the fractional parts of the square roots of the first 8 
 		--prime numbers (2..19).
@@ -39,7 +38,8 @@ begin
 	
 	--Initialize array of round constants: Use first 32 bits of fractional parts 
 		--of the cubed roots of the first 64 primes (2..311).
-	constant k is array (0 to 63) of STD_LOGIC_VECTOR(31 downto 0) :=
+	type vector_array_64by32 is array (0 to 15) of STD_LOGIC_VECTOR(31 downto 0);
+	constant k : vector_array_64by32 :=
 		(x"428a2f98", x"71374491", x"b5c0fbcf", x"e9b5dba5", x"3956c25b", x"59f111f1",
 		 x"923f82a4", x"ab1c5ed5", x"d807aa98", x"12835b01", x"243185be", x"550c7dc3",
 		 x"72be5d74", x"80deb1fe", x"9bdc06a7", x"c19bf174", x"e49b69c1", x"efbe4786",
@@ -52,24 +52,35 @@ begin
 		 x"5b9cca4f", x"682e6ff3", x"748f82ee", x"78a5636f", x"84c87814", x"8cc70208",
 		 x"90befffa", x"a4506ceb", x"bef9a3f7", x"c67178f2");
 
+begin
 
 	--This process statement contains the workings of the hash algorithm. The inputs include 
 		--the original message array and the arays of constants defined above. The output is 
 		--the final processed hash value.
 	algorithm: process(message)
-	begin
 	
 	--General Variable Declarations (See working variable declaration below)
 			variable index1 : integer := 0;
-			variable w is array (0 to 63) of STD_LOGIC_VECTOR(31 downto 0);
-			variable temp_message is array (0 to 63) of STD_LOGIC_VECTOR(31 downto 0);
-			variable s0: std_logic := 0;
-			variable s1: std_logic := 0;
-			variable s1: std_logic := 0;
-			variable temp1: std_logic := 0;
-			variable temp2: std_logic := 0;
-			variable maj: std_logic := 0;
+			variable w : vector_array_64by32;
+			variable temp_message : vector_array_64by32;
+			variable s0: std_logic := '0';
+			variable s1: std_logic := '0';
+			variable ch: std_logic := '0';
+			variable temp1: std_logic := '0';
+			variable temp2: std_logic := '0';
+			variable maj: std_logic := '0';
 			variable h_new : vector_array_16by32;
+			--Declare Working Variables.
+			variable a : vector_array_16by32;
+			variable b : vector_array_16by32;
+			variable c : vector_array_16by32;
+			variable d : vector_array_16by32;
+			variable e : vector_array_16by32;
+			variable f : vector_array_16by32;
+			variable g : vector_array_16by32;
+			variable h : vector_array_16by32;
+
+	begin
 
 	--Preprocessing: Append the bit '1' to message.
 		
@@ -78,7 +89,7 @@ begin
 				temp_message(index1) := x"00000000";
 			end loop init_temp_message;
 			
-			temp_message <= message & x"00000001";
+			temp_message := message & x"00000001";
 				
 	--Process Message in Successive 512-bit Chuncks
 		
@@ -96,18 +107,18 @@ begin
 			extend_next48: for index1 in 16 to 63 loop
 				s0   := (w(index1-15) ror 7) XOR (w(index1-15) ror 18) XOR (w(index1-15) sra 3);
 				s1   := (w(index1-2) ror 17) XOR (w(index1-2) ror 19) XOR (w(index1-2) sra 10);
-				w(i) := w(index1-16) + s0 + w(index1-7) + s1;
+				w(index1) := w(index1-16) + s0 + w(index1-7) + s1;
 			end loop extend_next48;
 			
 	--Initialize Working Variables to Current Hash Value
-			variable a : vector_array_16by32 := h_original(0);
-			variable b : vector_array_16by32 := h_original(1);
-			variable c : vector_array_16by32 := h_original(2);
-			variable d : vector_array_16by32 := h_original(3);
-			variable e : vector_array_16by32 := h_original(4);
-			variable f : vector_array_16by32 := h_original(5);
-			variable g : vector_array_16by32 := h_original(6);
-			variable h : vector_array_16by32 := h_original(7);
+			a := h_original(0);
+			b := h_original(1);
+			c := h_original(2);
+			d := h_original(3);
+			e := h_original(4);
+			f := h_original(5);
+			g := h_original(6);
+			h := h_original(7);
 
 	--Compression Function Main Loop
 			compression_adjustments: for index1 in 0 to 63 loop
