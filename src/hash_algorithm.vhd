@@ -71,14 +71,14 @@ begin
 			variable maj: std_logic := '0';
 			variable h_new : vector_array_16by32;
 			--Declare Working Variables.
-			variable a : vector_array_16by32;
-			variable b : vector_array_16by32;
-			variable c : vector_array_16by32;
-			variable d : vector_array_16by32;
-			variable e : vector_array_16by32;
-			variable f : vector_array_16by32;
-			variable g : vector_array_16by32;
-			variable h : vector_array_16by32;
+			variable a : STD_LOGIC_VECTOR(31 downto 0);
+			variable b : STD_LOGIC_VECTOR(31 downto 0);
+			variable c : STD_LOGIC_VECTOR(31 downto 0);
+			variable d : STD_LOGIC_VECTOR(31 downto 0);
+			variable e : STD_LOGIC_VECTOR(31 downto 0);
+			variable f : STD_LOGIC_VECTOR(31 downto 0);
+			variable g : STD_LOGIC_VECTOR(31 downto 0);
+			variable h : STD_LOGIC_VECTOR(31 downto 0);
 
 	begin
 
@@ -95,7 +95,7 @@ begin
 		
 			--Initialize message array.
 			init_w: for index1 in 0 to 63 loop
-				w := x"00000000";
+				w(index1) := x"00000000";
 			end loop init_w;
 			
 			--Copy chunk into first 16 words of message schedule array.
