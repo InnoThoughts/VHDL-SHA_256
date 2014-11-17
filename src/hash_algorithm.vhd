@@ -31,14 +31,14 @@ architecture Behavioral of Algorithm_Implementation is
 	--Initialize hash values: The hash values are initialized to the first 
 		--32 bits of the fractional parts of the square roots of the first 8 
 		--prime numbers (2..19).
-	type vector_array_16by32 is array (0 to 15) of STD_LOGIC_VECTOR(31 downto 0);
-	constant h_original : vector_array_16by32 := 
+	type vector_array_8by32 is array (0 to 7) of STD_LOGIC_VECTOR(31 downto 0);
+	constant h_original : vector_array_8by32 := 
 		(x"6a09e667", x"bb67ae85", x"3c6ef372", x"a54ff53a", x"510e527f",
 		 x"9b05688c", x"1f83d9ab", x"5be0cd19");
 	
 	--Initialize array of round constants: Use first 32 bits of fractional parts 
 		--of the cubed roots of the first 64 primes (2..311).
-	type vector_array_64by32 is array (0 to 15) of STD_LOGIC_VECTOR(31 downto 0);
+	type vector_array_64by32 is array (0 to 63) of STD_LOGIC_VECTOR(31 downto 0);
 	constant k : vector_array_64by32 :=
 		(x"428a2f98", x"71374491", x"b5c0fbcf", x"e9b5dba5", x"3956c25b", x"59f111f1",
 		 x"923f82a4", x"ab1c5ed5", x"d807aa98", x"12835b01", x"243185be", x"550c7dc3",
@@ -69,7 +69,7 @@ begin
 			variable temp1: STD_LOGIC_VECTOR(31 downto 0);
 			variable temp2: STD_LOGIC_VECTOR(31 downto 0);
 			variable maj: STD_LOGIC_VECTOR(31 downto 0);
-			variable h_new : vector_array_16by32;
+			variable h_new : vector_array_8by32;
 			--Declare Working Variables.
 			variable a : STD_LOGIC_VECTOR(31 downto 0);
 			variable b : STD_LOGIC_VECTOR(31 downto 0);
