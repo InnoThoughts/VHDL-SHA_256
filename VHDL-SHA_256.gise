@@ -22,14 +22,17 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="VHDL-SHA_256.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Algorithm_Implementation_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Algorithm_Implementation_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Algorithm_Implementation_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Algorithm_Implementation_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="algorithm_testbench_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="algorithm_testbench_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="algorithm_testbench_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="algorithm_testbench_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="counter_5b.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="counter_5b.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="counter_5b.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="counter_5b_testbench_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
@@ -45,9 +48,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1416183090" xil_pn:in_ck="-6606273208052899701" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1416183090">
+    <transform xil_pn:end_ts="1416185640" xil_pn:in_ck="-3055562536268548575" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1416185640">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="algorithm_testbench.vhd"/>
       <outfile xil_pn:name="src/char_register.vhd"/>
       <outfile xil_pn:name="src/counter_5b.vhd"/>
       <outfile xil_pn:name="src/hash_algorithm.vhd"/>
@@ -62,11 +66,11 @@
       <outfile xil_pn:name="testbenches/mux_5to32_testbench.vhd"/>
       <outfile xil_pn:name="testbenches/word_register_testbench.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1415764649" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-427983854378904529" xil_pn:start_ts="1415764649">
+    <transform xil_pn:end_ts="1416185654" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2055713612048515300" xil_pn:start_ts="1416185654">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1415764649" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-8682969609822595749" xil_pn:start_ts="1415764649">
+    <transform xil_pn:end_ts="1416185654" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="883932706191906632" xil_pn:start_ts="1416185654">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -74,9 +78,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1416183090" xil_pn:in_ck="-6606273208052899701" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1416183090">
+    <transform xil_pn:end_ts="1416185654" xil_pn:in_ck="-3055562536268548575" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1416185654">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="algorithm_testbench.vhd"/>
       <outfile xil_pn:name="src/char_register.vhd"/>
       <outfile xil_pn:name="src/counter_5b.vhd"/>
       <outfile xil_pn:name="src/hash_algorithm.vhd"/>
@@ -91,20 +96,20 @@
       <outfile xil_pn:name="testbenches/mux_5to32_testbench.vhd"/>
       <outfile xil_pn:name="testbenches/word_register_testbench.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1416183095" xil_pn:in_ck="-6606273208052899701" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4785564941525031522" xil_pn:start_ts="1416183090">
+    <transform xil_pn:end_ts="1416185658" xil_pn:in_ck="-3055562536268548575" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="5228575062014138889" xil_pn:start_ts="1416185654">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="Algorithm_Implementation_beh.prj"/>
-      <outfile xil_pn:name="Algorithm_Implementation_isim_beh.exe"/>
+      <outfile xil_pn:name="algorithm_testbench_beh.prj"/>
+      <outfile xil_pn:name="algorithm_testbench_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1416183095" xil_pn:in_ck="-3040936126079404769" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-2519959431816143441" xil_pn:start_ts="1416183095">
+    <transform xil_pn:end_ts="1416185658" xil_pn:in_ck="-7520390598476725036" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-960928663369044266" xil_pn:start_ts="1416185658">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="Algorithm_Implementation_isim_beh.wdb"/>
+      <outfile xil_pn:name="algorithm_testbench_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
