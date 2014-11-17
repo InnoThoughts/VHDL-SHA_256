@@ -63,12 +63,12 @@ begin
 			variable index1 : integer := 0;
 			variable w : vector_array_64by32;
 			variable temp_message : vector_array_64by32;
-			variable s0: std_logic := '0';
-			variable s1: std_logic := '0';
-			variable ch: std_logic := '0';
-			variable temp1: std_logic := '0';
-			variable temp2: std_logic := '0';
-			variable maj: std_logic := '0';
+			variable s0: STD_LOGIC_VECTOR(31 downto 0);
+			variable s1: STD_LOGIC_VECTOR(31 downto 0);
+			variable ch: STD_LOGIC_VECTOR(31 downto 0);
+			variable temp1: STD_LOGIC_VECTOR(31 downto 0);
+			variable temp2: STD_LOGIC_VECTOR(31 downto 0);
+			variable maj: STD_LOGIC_VECTOR(31 downto 0);
 			variable h_new : vector_array_16by32;
 			--Declare Working Variables.
 			variable a : STD_LOGIC_VECTOR(31 downto 0);
@@ -105,9 +105,13 @@ begin
 			
 			--Extend first 16 words into remaining 48 words of message schedule array.
 			extend_next48: for index1 in 16 to 63 loop
-				s0   := (w(index1-15) ror 7) XOR (w(index1-15) ror 18) XOR (w(index1-15) srl 3);
-				s1   := (w(index1-2) ror 17) XOR (w(index1-2) ror 19) XOR (w(index1-2) srl 10);
-				w(index1) := w(index1-16) + s0 + w(index1-7) + s1;
+				s0   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-15)), 7)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-15)), 18)) 
+							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(index1-15)), 3));
+				s1   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-2)), 17)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-2)), 19)) 
+							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(index1-2)), 10));
+				w(index1) := STD_LOGIC_VECTOR(unsigned(w(index1-16)) + unsigned(s0) + unsigned(w(index1-7)) + unsigned(s1));
 			end loop extend_next48;
 			
 	--Initialize Working Variables to Current Hash Value
@@ -122,35 +126,39 @@ begin
 
 	--Compression Function Main Loop
 			compression_adjustments: for index1 in 0 to 63 loop
-				s1 := (e ror 6) XOR (e ror 11) XOR (e ror 25);
+				s1 := STD_LOGIC_VECTOR(rotate_right(unsigned(e), 6)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(e), 11)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(e), 25));
 				ch := (e AND f) XOR ((NOT e) AND g);
-				temp1 := h + s1 + ch + k(index1) + w(index1);
-				s0 := (a ror 2) XOR (a ror 13) XOR (a ror 22);
+				temp1 := STD_LOGIC_VECTOR(unsigned(h) + unsigned(s1) + unsigned(ch) + unsigned(k(index1)) + unsigned(w(index1)));
+				s0 := STD_LOGIC_VECTOR(rotate_right(unsigned(a), 2)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(a), 13)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(a), 22));
 				maj := (a AND b) XOR (a AND c) XOR (b AND c);
-				temp2 := s0 + maj;
+				temp2 := STD_LOGIC_VECTOR(unsigned(s0) + unsigned(maj));
 			end loop compression_adjustments;
 			
 			h := g;
 			g := f;
 			f := e;
-			e := d + temp1;
+			e := STD_LOGIC_VECTOR(unsigned(d) + unsigned(temp1));
 			d := c;
 			c := b;
 			b := a;
-			a := temp1 + temp2;
+			a := STD_LOGIC_VECTOR(unsigned(temp1) + unsigned(temp2));
 
 	--Add Compressed Chunk to Current Hash Value
-			h_new(0) := h_original(0) + a;
-			h_new(1) := h_original(1) + b;
-			h_new(2) := h_original(2) + c;
-			h_new(3) := h_original(3) + d;
-			h_new(4) := h_original(4) + e;
-			h_new(5) := h_original(5) + f;
-			h_new(6) := h_original(6) + g;
-			h_new(7) := h_original(7) + h;
+			h_new(0) := STD_LOGIC_VECTOR(unsigned(h_original(0)) + unsigned(a));
+			h_new(1) := STD_LOGIC_VECTOR(unsigned(h_original(1)) + unsigned(b));
+			h_new(2) := STD_LOGIC_VECTOR(unsigned(h_original(2)) + unsigned(c));
+			h_new(3) := STD_LOGIC_VECTOR(unsigned(h_original(3)) + unsigned(d));
+			h_new(4) := STD_LOGIC_VECTOR(unsigned(h_original(4)) + unsigned(e));
+			h_new(5) := STD_LOGIC_VECTOR(unsigned(h_original(5)) + unsigned(f));
+			h_new(6) := STD_LOGIC_VECTOR(unsigned(h_original(6)) + unsigned(g));
+			h_new(7) := STD_LOGIC_VECTOR(unsigned(h_original(7)) + unsigned(h));
 
 	--Produce Final Hash Value (Big-Endian)
-			digest := h_new(0) & h_new(1) & h_new(2) & h_new(3) & h_new(4) & 
+			digest <= h_new(0) & h_new(1) & h_new(2) & h_new(3) & h_new(4) & 
 							h_new(5) & h_new(6) & h_new(6);
 
 	end process algorithm;
