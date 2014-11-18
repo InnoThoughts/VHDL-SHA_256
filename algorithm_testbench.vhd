@@ -84,7 +84,7 @@ BEGIN
 --      wait for <clock>_period*10;
 
       -- insert stimulus here 
-		--message <= "00000000";
+		message (255 downto 248) <= "01000001";
 
       wait;
    end process;

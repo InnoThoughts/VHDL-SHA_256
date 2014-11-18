@@ -62,7 +62,7 @@ begin
 	--General Variable Declarations (See working variable declaration below)
 			variable index1 : integer := 0;
 			variable w : vector_array_64by32;
-			variable temp_message : vector_array_64by32;
+			variable temp_message : STD_LOGIC_VECTOR(511 downto 0) := (OTHERS => '0');
 			variable s0: STD_LOGIC_VECTOR(31 downto 0);
 			variable s1: STD_LOGIC_VECTOR(31 downto 0);
 			variable ch: STD_LOGIC_VECTOR(31 downto 0);
@@ -84,23 +84,21 @@ begin
 
 	--Preprocessing: Append the bit '1' to message.
 		
-			--Initialize message array and pad with zeros.
-			init_temp_message: for index1 in 0 to 63 loop
-				temp_message(index1) := x"00000000";
-			end loop init_temp_message;
-			
-			temp_message := message & x"00000001";
+			--Initialize message array and pad with zeros.			
+			temp_message(511 downto 256) := message;
+			temp_message(255) := '1';
+			temp_message(63 downto 0) := STD_LOGIC_VECTOR(to_unsigned(message'length, 64)); -- length of message as a 64-bit big-endian integer
 				
 	--Process Message in Successive 512-bit Chuncks
 		
 			--Initialize message array.
-			init_w: for index1 in 0 to 63 loop
-				w(index1) := x"00000000";
+			init_w: for i in 0 to 63 loop
+				w(i) := (OTHERS => '0');
 			end loop init_w;
 			
 			--Copy chunk into first 16 words of message schedule array.
-			copy_first16: for index1 in 0 to 15 loop
-				w(index1) := temp_message(index1);
+			copy_first16: for index1 in 1 to 16 loop
+				w(index1) := temp_message((index1 * 32)-1 downto ((index1-1)*32));
 			end loop copy_first16;
 			
 			--Extend first 16 words into remaining 48 words of message schedule array.
