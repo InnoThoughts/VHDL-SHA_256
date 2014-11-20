@@ -28,65 +28,40 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
 ENTITY algorithm_testbench IS
 END algorithm_testbench;
  
-ARCHITECTURE behavior OF algorithm_testbench IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
+ARCHITECTURE behavior OF algorithm_testbench IS
  
     COMPONENT Algorithm_Implementation
     PORT(
          message : IN  std_logic_vector(255 downto 0);
-         digest : OUT  std_logic_vector(255 downto 0)
-        );
+          digest : OUT std_logic_vector(255 downto 0));
     END COMPONENT;
     
 
-   --Inputs
-   signal message : std_logic_vector(255 downto 0) := (others => '0');
+    --Inputs
+    signal message : std_logic_vector(255 downto 0) := (OTHERS => '0');
 
- 	--Outputs
-   signal digest : std_logic_vector(255 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name 
- 
---   constant <clock>_period : time := 10 ns;
+    --Outputs
+    signal digest : std_logic_vector(255 downto 0);
  
 BEGIN
- 
-	-- Instantiate the Unit Under Test (UUT)
+
    uut: Algorithm_Implementation PORT MAP (
-          message => message,
-          digest => digest
-        );
+       message => message,
+       digest  => digest);
 
---   -- Clock process definitions
---   <clock>_process :process
---   begin
---		<clock> <= '0';
---		wait for <clock>_period/2;
---		<clock> <= '1';
---		wait for <clock>_period/2;
---   end process;
- 
-
-   -- Stimulus process
    stim_proc: process
-   begin		
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
+   begin
+		 wait for 100 ns;
 
---      wait for <clock>_period*10;
+		 message (127 downto 0) <= "00101001001010010010100100101001001010010010100100101001001010010010100100101001001010010010100100101001001010010010100100101001";
+		 message (255 downto 128) <= "00101001001010010010100100101001001010010010100100101001001010010010100100101001001010010010100100101001001010010010100100101001";
+		 wait for 10 ns;
+		 assert (digest = "0010001010100100100000000101000101011001010011000001100101001001110111101110110101110000010000001000010100001100000111110000111110000111011001000101001101111111010100011001000110111110010101100111001100101101000101101010010101001100000111011000000101010011") report "Error, expected output of ." severity ERROR;
 
-      -- insert stimulus here 
-		message (255 downto 248) <= "01000001";
-
-      wait;
+       wait;
    end process;
 
 END;

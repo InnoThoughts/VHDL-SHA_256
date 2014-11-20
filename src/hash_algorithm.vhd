@@ -60,7 +60,6 @@ begin
 	algorithm: process(message)
 	
 	--General Variable Declarations (See working variable declaration below)
-			variable index1 : integer := 0;
 			variable w : vector_array_64by32;
 			variable temp_message : STD_LOGIC_VECTOR(511 downto 0) := (OTHERS => '0');
 			variable s0: STD_LOGIC_VECTOR(31 downto 0);
@@ -97,8 +96,12 @@ begin
 			end loop init_w;
 			
 			--Copy chunk into first 16 words of message schedule array.
-			copy_first16: for index1 in 1 to 16 loop
-				w(index1) := temp_message((index1 * 32)-1 downto ((index1-1)*32));
+			copy_first16: for i in 0 to 15 loop
+				w(i) := temp_message((32*(16-i))-1 downto (32*(15-i)));
+--				0 -> 511 downto 480
+--				1 -> 479 downto 448
+--				...
+--				15 -> 31 downto 0
 			end loop copy_first16;
 			
 			--Extend first 16 words into remaining 48 words of message schedule array.
