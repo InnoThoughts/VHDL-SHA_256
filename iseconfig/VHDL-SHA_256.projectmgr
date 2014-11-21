@@ -7,6 +7,10 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/input_module - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_1 - word_register - Structural</ClosedNode>
+         <ClosedNode>/input_module - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
+         <ClosedNode>/input_module - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
+         <ClosedNode>/input_module - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_1 - line_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_1 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
@@ -14,27 +18,27 @@
          <ClosedNode>/memory_array - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|memory_array.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>count - counter_5b - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/counter_5b.vhd)</SelectedItem>
+         <SelectedItem>input_module - Structural (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/input_module.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001ab000000020000000000000000000000000200000064ffffffff000000810000000300000002000001ab0000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001aa000000020000000000000000000000000200000064ffffffff000000810000000300000002000001aa0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>count - counter_5b - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/counter_5b.vhd)</CurrentItem>
+      <CurrentItem>input_module - Structural (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/input_module.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem>Design Utilities</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem>Design Utilities</CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -69,20 +73,21 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Design Summary/Reports</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000117000000010000000100000000000000000000000064ffffffff000000810000000000000001000001170000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Design Summary/Reports</CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff0000000000000002000000eb0000005a01000000050100000002</SourceProcessView>
-   <CurrentView>Implementation</CurrentView>
+   <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/char_register_testbench - Behavioral C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|testbenches|char_register_testbench.vhd</ClosedNode>
+         <ClosedNode>/input_module - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_1 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
@@ -92,13 +97,13 @@
          <ClosedNode>/word_register_testbench - behavior C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|testbenches|word_register_testbench.vhd/uut - word_register - Structural</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>mux_5to32_testbench - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/testbenches/mux_5to32_testbench.vhd)</SelectedItem>
+         <SelectedItem>hex_decoder_testbench - behavior (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/testbenches/hex_decoder_testbench.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001ab000000020000000000000000000000000200000064ffffffff000000810000000300000002000001ab0000000100000003000000000000000100000003</ViewHeaderState>
-      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>mux_5to32_testbench - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/testbenches/mux_5to32_testbench.vhd)</CurrentItem>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a8000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a80000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>hex_decoder_testbench - behavior (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/testbenches/hex_decoder_testbench.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -119,12 +124,12 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Simulate Behavioral Model</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Simulate Behavioral Model</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
 </Project>

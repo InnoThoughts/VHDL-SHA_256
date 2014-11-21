@@ -34,7 +34,7 @@ architecture Structural of input_module is
                 OUTPUT : out STD_LOGIC_VECTOR (255 downto 0));
     end component;
     
-    signal count_s   : STD_LOGIC_VECTOR (4 downto 0) := "0000";
+    signal count_s   : STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
     signal mem_sel_s : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
