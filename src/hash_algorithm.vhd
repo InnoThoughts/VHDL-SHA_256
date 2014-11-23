@@ -68,7 +68,7 @@ begin
 			variable temp1: STD_LOGIC_VECTOR(31 downto 0);
 			variable temp2: STD_LOGIC_VECTOR(31 downto 0);
 			variable maj: STD_LOGIC_VECTOR(31 downto 0);
-			variable h_new : vector_array_8by32;
+			variable h_new : vector_array_8by32 := h_original;
 			--Declare Working Variables.
 			variable a : STD_LOGIC_VECTOR(31 downto 0);
 			variable b : STD_LOGIC_VECTOR(31 downto 0);
@@ -138,26 +138,26 @@ begin
 				maj := (a AND b) XOR (a AND c) XOR (b AND c);
 				temp2 := STD_LOGIC_VECTOR(unsigned(s0) + unsigned(maj));
 			
-			h := g;
-			g := f;
-			f := e;
-			e := STD_LOGIC_VECTOR(unsigned(d) + unsigned(temp1));
-			d := c;
-			c := b;
-			b := a;
-			a := STD_LOGIC_VECTOR(unsigned(temp1) + unsigned(temp2));
-			
+				h := g;
+				g := f;
+				f := e;
+				e := STD_LOGIC_VECTOR(unsigned(d) + unsigned(temp1));
+				d := c;
+				c := b;
+				b := a;
+				a := STD_LOGIC_VECTOR(unsigned(temp1) + unsigned(temp2));
+				
+			--Add Compressed Chunk to Current Hash Value
+				h_new(0) := STD_LOGIC_VECTOR(unsigned(h_new(0)) + unsigned(a));
+				h_new(1) := STD_LOGIC_VECTOR(unsigned(h_new(1)) + unsigned(b));
+				h_new(2) := STD_LOGIC_VECTOR(unsigned(h_new(2)) + unsigned(c));
+				h_new(3) := STD_LOGIC_VECTOR(unsigned(h_new(3)) + unsigned(d));
+				h_new(4) := STD_LOGIC_VECTOR(unsigned(h_new(4)) + unsigned(e));
+				h_new(5) := STD_LOGIC_VECTOR(unsigned(h_new(5)) + unsigned(f));
+				h_new(6) := STD_LOGIC_VECTOR(unsigned(h_new(6)) + unsigned(g));
+				h_new(7) := STD_LOGIC_VECTOR(unsigned(h_new(7)) + unsigned(h));
+				
 			end loop compression_adjustments;
-
-	--Add Compressed Chunk to Current Hash Value
-			h_new(0) := STD_LOGIC_VECTOR(unsigned(h_original(0)) + unsigned(a));
-			h_new(1) := STD_LOGIC_VECTOR(unsigned(h_original(1)) + unsigned(b));
-			h_new(2) := STD_LOGIC_VECTOR(unsigned(h_original(2)) + unsigned(c));
-			h_new(3) := STD_LOGIC_VECTOR(unsigned(h_original(3)) + unsigned(d));
-			h_new(4) := STD_LOGIC_VECTOR(unsigned(h_original(4)) + unsigned(e));
-			h_new(5) := STD_LOGIC_VECTOR(unsigned(h_original(5)) + unsigned(f));
-			h_new(6) := STD_LOGIC_VECTOR(unsigned(h_original(6)) + unsigned(g));
-			h_new(7) := STD_LOGIC_VECTOR(unsigned(h_original(7)) + unsigned(h));
 
 	--Produce Final Hash Value (Big-Endian)
 			digest <= h_new(0) & h_new(1) & h_new(2) & h_new(3) & h_new(4) & 
