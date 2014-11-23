@@ -137,7 +137,6 @@ begin
 							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(a), 22));
 				maj := (a AND b) XOR (a AND c) XOR (b AND c);
 				temp2 := STD_LOGIC_VECTOR(unsigned(s0) + unsigned(maj));
-			end loop compression_adjustments;
 			
 			h := g;
 			g := f;
@@ -147,6 +146,8 @@ begin
 			c := b;
 			b := a;
 			a := STD_LOGIC_VECTOR(unsigned(temp1) + unsigned(temp2));
+			
+			end loop compression_adjustments;
 
 	--Add Compressed Chunk to Current Hash Value
 			h_new(0) := STD_LOGIC_VECTOR(unsigned(h_original(0)) + unsigned(a));
