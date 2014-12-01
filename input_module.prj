@@ -1,0 +1,7 @@
+vhdl work "src/char_register.vhd"
+vhdl work "src/word_register.vhd"
+vhdl work "src/line_register.vhd"
+vhdl work "src/mux_5to32.vhd"
+vhdl work "src/memory_array.vhd"
+vhdl work "src/counter_5b.vhd"
+vhdl work "src/input_module.vhd"

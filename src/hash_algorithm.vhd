@@ -68,7 +68,7 @@ begin
 			variable temp1: STD_LOGIC_VECTOR(31 downto 0);
 			variable temp2: STD_LOGIC_VECTOR(31 downto 0);
 			variable maj: STD_LOGIC_VECTOR(31 downto 0);
-			variable h_new : vector_array_8by32 := h_original;
+			variable h_new : vector_array_8by32 := h_original; --initialize to first values of hash constants
 			--Declare Working Variables.
 			variable a : STD_LOGIC_VECTOR(31 downto 0);
 			variable b : STD_LOGIC_VECTOR(31 downto 0);
@@ -81,7 +81,7 @@ begin
 
 	begin
 
-	--Preprocessing: Append the bit '1' to message.
+	--Preprocessing: Append the bit '1' to message, followed by zeros and the length of the message as a 64-bit big-endian integer
 		
 			--Initialize message array and pad with zeros.			
 			temp_message(511 downto 256) := message;
@@ -105,14 +105,14 @@ begin
 			end loop copy_first16;
 			
 			--Extend first 16 words into remaining 48 words of message schedule array.
-			extend_next48: for index1 in 16 to 63 loop
-				s0   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-15)), 7)) 
-							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-15)), 18)) 
-							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(index1-15)), 3));
-				s1   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-2)), 17)) 
-							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(index1-2)), 19)) 
-							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(index1-2)), 10));
-				w(index1) := STD_LOGIC_VECTOR(unsigned(w(index1-16)) + unsigned(s0) + unsigned(w(index1-7)) + unsigned(s1));
+			extend_next48: for i in 16 to 63 loop
+				s0   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(i-15)), 7)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(i-15)), 18)) 
+							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(i-15)), 3));
+				s1   := STD_LOGIC_VECTOR(rotate_right(unsigned(w(i-2)), 17)) 
+							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(w(i-2)), 19)) 
+							XOR STD_LOGIC_VECTOR(shift_right(unsigned(w(i-2)), 10));
+				w(i) := STD_LOGIC_VECTOR(unsigned(w(i-16)) + unsigned(s0) + unsigned(w(i-7)) + unsigned(s1));
 			end loop extend_next48;
 			
 	--Initialize Working Variables to Current Hash Value
