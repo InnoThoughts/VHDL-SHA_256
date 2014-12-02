@@ -68,7 +68,7 @@ begin
 			variable temp1: STD_LOGIC_VECTOR(31 downto 0);
 			variable temp2: STD_LOGIC_VECTOR(31 downto 0);
 			variable maj: STD_LOGIC_VECTOR(31 downto 0);
-			variable h_new : vector_array_8by32 := h_original; --initialize to first values of hash constants
+			variable h_new : vector_array_8by32;
 			--Declare Working Variables.
 			variable a : STD_LOGIC_VECTOR(31 downto 0);
 			variable b : STD_LOGIC_VECTOR(31 downto 0);
@@ -80,6 +80,11 @@ begin
 			variable h : STD_LOGIC_VECTOR(31 downto 0);
 
 	begin
+
+	--Initialize to first values of hash constants.
+			initialize_h: for i in 0 to 7 loop
+				h_new(i) := h_original(i);
+			end loop initialize_h;
 
 	--Preprocessing: Append the bit '1' to message, followed by zeros and the length of the message as a 64-bit big-endian integer
 		
@@ -126,7 +131,7 @@ begin
 			h := h_original(7);
 
 	--Compression Function Main Loop
-			compression_adjustments: for index1 in 0 to 63 loop
+			compression_adjustments: for index1 in 0 to 0 loop
 				s1 := STD_LOGIC_VECTOR(rotate_right(unsigned(e), 6)) 
 							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(e), 11)) 
 							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(e), 25));
