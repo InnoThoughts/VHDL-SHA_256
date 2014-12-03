@@ -1,0 +1,332 @@
+Release 14.5 - xst P.58f (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.14 secs
+ 
+--> Reading design: Algorithm_Implementation.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Algorithm_Implementation.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Algorithm_Implementation"
+Output Format                      : NGC
+Target Device                      : xc3s500e-4-fg320
+
+---- Source Options
+Top Module Name                    : Algorithm_Implementation
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Kenan Files/School Work/2014 Fall/VHDL-SHA_256/src/hash_algorithm.vhd" in Library work.
+Entity <algorithm_implementation> compiled.
+Entity <algorithm_implementation> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <Algorithm_Implementation> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <Algorithm_Implementation> in library <work> (Architecture <behavioral>).
+Entity <Algorithm_Implementation> analyzed. Unit <Algorithm_Implementation> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <Algorithm_Implementation>.
+    Related source file is "C:/Kenan Files/School Work/2014 Fall/VHDL-SHA_256/src/hash_algorithm.vhd".
+WARNING:Xst:647 - Input <message<191:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit adder for signal <digest$add0000> created at line 158.
+    Found 32-bit adder for signal <digest$add0001> created at line 162.
+    Found 32-bit adder for signal <digest$add0002> created at line 141.
+    Found 32-bit adder for signal <digest$addsub0000> created at line 155.
+    Found 32-bit adder for signal <digest$addsub0001> created at line 151.
+    Summary:
+	inferred   5 Adder/Subtractor(s).
+Unit <Algorithm_Implementation> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 32-bit adder                                          : 5
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 32-bit adder                                          : 5
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <Algorithm_Implementation> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Algorithm_Implementation, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Algorithm_Implementation.ngr
+Top Level Output File Name         : Algorithm_Implementation
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 512
+
+Cell Usage :
+# BELS                             : 272
+#      GND                         : 1
+#      INV                         : 54
+#      LUT1                        : 37
+#      MUXCY                       : 88
+#      VCC                         : 1
+#      XORCY                       : 91
+# IO Buffers                       : 288
+#      IBUF                        : 32
+#      OBUF                        : 256
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-4 
+
+ Number of Slices:                       46  out of   4656     0%  
+ Number of 4 input LUTs:                 91  out of   9312     0%  
+ Number of IOs:                         512
+ Number of bonded IOBs:                 288  out of    232   124% (*) 
+
+WARNING:Xst:1336 -  (*) More than 100% of Device resources are used
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 11.546ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 9115 / 64
+-------------------------------------------------------------------------
+Delay:               11.546ns (Levels of Logic = 33)
+  Source:            message<228> (PAD)
+  Destination:       digest<255> (PAD)
+
+  Data Path: message<228> to digest<255>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.595  message_228_IBUF (message_228_IBUF)
+     LUT1:I0->O            1   0.704   0.000  Madd_digest_add0002_cy<4>_rt (Madd_digest_add0002_cy<4>_rt)
+     MUXCY:S->O            1   0.464   0.000  Madd_digest_add0002_cy<4> (Madd_digest_add0002_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<5> (Madd_digest_add0002_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<6> (Madd_digest_add0002_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<7> (Madd_digest_add0002_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<8> (Madd_digest_add0002_cy<8>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<9> (Madd_digest_add0002_cy<9>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<10> (Madd_digest_add0002_cy<10>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<11> (Madd_digest_add0002_cy<11>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<12> (Madd_digest_add0002_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<13> (Madd_digest_add0002_cy<13>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<14> (Madd_digest_add0002_cy<14>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<15> (Madd_digest_add0002_cy<15>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<16> (Madd_digest_add0002_cy<16>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<17> (Madd_digest_add0002_cy<17>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<18> (Madd_digest_add0002_cy<18>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<19> (Madd_digest_add0002_cy<19>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<20> (Madd_digest_add0002_cy<20>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<21> (Madd_digest_add0002_cy<21>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<22> (Madd_digest_add0002_cy<22>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<23> (Madd_digest_add0002_cy<23>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<24> (Madd_digest_add0002_cy<24>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<25> (Madd_digest_add0002_cy<25>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0002_cy<26> (Madd_digest_add0002_cy<26>)
+     XORCY:CI->O           2   0.804   0.622  Madd_digest_add0002_xor<27> (digest_add0002<27>)
+     LUT1:I0->O            1   0.704   0.000  Madd_digest_add0001_Madd_cy<27>_rt (Madd_digest_add0001_Madd_cy<27>_rt)
+     MUXCY:S->O            1   0.464   0.000  Madd_digest_add0001_Madd_cy<27> (Madd_digest_add0001_Madd_cy<27>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0001_Madd_cy<28> (Madd_digest_add0001_Madd_cy<28>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_digest_add0001_Madd_cy<29> (Madd_digest_add0001_Madd_cy<29>)
+     MUXCY:CI->O           0   0.059   0.000  Madd_digest_add0001_Madd_cy<30> (Madd_digest_add0001_Madd_cy<30>)
+     XORCY:CI->O           1   0.804   0.420  Madd_digest_add0001_Madd_xor<31> (digest_127_OBUF)
+     OBUF:I->O                 3.272          digest_127_OBUF (digest<127>)
+    ----------------------------------------
+    Total                     11.546ns (9.909ns logic, 1.637ns route)
+                                       (85.8% logic, 14.2% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.51 secs
+ 
+--> 
+
+Total memory usage is 253324 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
