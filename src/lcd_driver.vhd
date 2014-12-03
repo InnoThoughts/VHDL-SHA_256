@@ -66,6 +66,27 @@ begin
         rs => rs,
         e => e,
         lcd_data => lcd_data);
+        
+    driver: process(CLK)
+        variable char : INTEGER range 0 to 31 := 0;
+    begin
+        if(rising_edge(CLK)) then
+            if(lcd_busy = '0' AND lcd_enable = '0') then
+                lcd_enable <= '1';
+                if(char < 31) then
+                    char := char + 1;
+                end if;
+                
+                lcd_bus <= "10" & display((8*(31-char)+7) downto (8*(31-char))); 
+                -- 0 -> 255 : 248
+                -- 1 -> 247 : 240
+                -- ...
+                -- 31 -> 7 : 0
+            else
+                lcd_enable <= '0';
+            end if;
+        end if;
+    end process driver;
 
 end Behavioral;
 

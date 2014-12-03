@@ -16,6 +16,7 @@
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_1 - line_register - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_map - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_mode - input_module - Structural</ClosedNode>
@@ -28,13 +29,13 @@
          <ClosedNode>/sseg_dec - my_sseg C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|thirdparty|sseg_dec.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>lcd_driver - lcd_driver - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/lcd_driver.vhd)</SelectedItem>
+         <SelectedItem>main - Structural (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/main.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001b9000000020000000000000000000000000200000064ffffffff000000810000000300000002000001b90000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a1000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a10000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>lcd_driver - lcd_driver - Behavioral (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/lcd_driver.vhd)</CurrentItem>
+      <CurrentItem>main - Structural (C:/Users/Nate/Documents/GitHub/VHDL-SHA_256/src/main.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -88,7 +89,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000117000000010000000100000000000000000000000064ffffffff000000810000000000000001000001170000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
