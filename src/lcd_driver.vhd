@@ -30,12 +30,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity lcd_driver is
-    Port ( CLK : in STD_LOGIC;
-           DISPLAY : in STD_LOGIC_VECTOR (255 downto 0);
-           RS : out  STD_LOGIC;
-           RW : out  STD_LOGIC;
-           E : out  STD_LOGIC;
-           LCD_DATA : out  STD_LOGIC_VECTOR (7 downto 0));
+    Port (      CLK : in  STD_LOGIC;
+            DISPLAY : in  STD_LOGIC_VECTOR (255 downto 0);
+                 RS : out STD_LOGIC;
+                 RW : out STD_LOGIC;
+                  E : out STD_LOGIC;
+           LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
 end lcd_driver;
 
 architecture Behavioral of lcd_driver is
@@ -57,21 +57,22 @@ architecture Behavioral of lcd_driver is
 begin
 
     lcd_control : lcd_controller PORT MAP(
-        clk => clk,
-        reset_n => '1',
+        clk        => clk,
+        reset_n    => '1',
         lcd_enable => lcd_enable,
-        lcd_bus => lcd_bus, 
-        busy => lcd_busy,
-        rw => rw,
-        rs => rs,
-        e => e,
-        lcd_data => lcd_data);
+        lcd_bus    => lcd_bus, 
+        busy       => lcd_busy,
+        rw         => rw,
+        rs         => rs,
+        e          => e,
+        lcd_data   => lcd_data);
         
     driver: process(CLK)
         variable char : INTEGER range 0 to 31 := 0;
     begin
         if(rising_edge(CLK)) then
             if(lcd_busy = '0' AND lcd_enable = '0') then
+            
                 lcd_enable <= '1';
                 if(char < 31) then
                     char := char + 1;

@@ -15,27 +15,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity main is
-    Port (
-        CLK : in STD_LOGIC;
-        PS2_CLK : inout STD_LOGIC;
-        PS2_DATA : in STD_LOGIC;
-        PS2_CLEAR_DATA_READY : in STD_LOGIC;
-        -- LCD
-        RS : out STD_LOGIC;
-        RW : out STD_LOGIC;
-        E  : out STD_LOGIC;
-        LCD_DATA : OUT STD_LOGIC_VECTOR (7 downto 0));
+    Port (              CLK : in STD_LOGIC;
+                -- KEYBOARD
+                    PS2_CLK : inout STD_LOGIC;
+                   PS2_DATA : in STD_LOGIC;
+       PS2_CLEAR_DATA_READY : in STD_LOGIC;
+                     -- LCD
+                         RS : out STD_LOGIC;
+                         RW : out STD_LOGIC;
+                          E : out STD_LOGIC;
+                   LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
 end main;
 
 architecture Structural of main is
 
     component ps2_register is
-        PORT ( PS2_DATA_READY,
-               PS2_ERROR            : out STD_LOGIC;  
-               PS2_KEYCODE         : out STD_LOGIC_VECTOR(7 downto 0); 
-               PS2_CLK              : inout STD_LOGIC;
-               PS2_DATA             : in  STD_LOGIC;
-               PS2_CLEAR_DATA_READY : in  STD_LOGIC);
+        PORT (       PS2_DATA : in  STD_LOGIC;
+         PS2_CLEAR_DATA_READY : in  STD_LOGIC;
+               PS2_DATA_READY : out STD_LOGIC;
+                    PS2_ERROR : out STD_LOGIC;  
+                  PS2_KEYCODE : out STD_LOGIC_VECTOR(7 downto 0); 
+                      PS2_CLK : inout STD_LOGIC);
     end component;
     
     component input_module is
@@ -66,77 +66,77 @@ architecture Structural of main is
     
     component mode_demux is
      Port (  USER_INPUT : in  STD_LOGIC_VECTOR (255 downto 0);
-           HASH_OUTPUT : in  STD_LOGIC_VECTOR (255 downto 0);
-           MODE_ENABLE : in  STD_LOGIC_VECTOR (1 downto 0);
-               LCD_OUT : out STD_LOGIC_VECTOR (255 downto 0));
+            HASH_OUTPUT : in  STD_LOGIC_VECTOR (255 downto 0);
+            MODE_ENABLE : in  STD_LOGIC_VECTOR (1   downto 0);
+                LCD_OUT : out STD_LOGIC_VECTOR (255 downto 0));
     end component;
 
     component lcd_driver is
-    Port (      CLK : in STD_LOGIC;
-                DISPLAY : in STD_LOGIC_VECTOR (255 downto 0);
-                RS, RW, E : out STD_LOGIC;
-                LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
+    Port (     CLK : in STD_LOGIC;
+           DISPLAY : in STD_LOGIC_VECTOR (255 downto 0);
+         RS, RW, E : out STD_LOGIC;
+          LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
-    signal new_keycode : std_logic;
-    signal keycode : std_logic_vector (7 downto 0);
-    signal keycode_error : std_logic;
+    signal new_keycode   : STD_LOGIC;
+    signal keycode       : STD_LOGIC_VECTOR (7 downto 0);
+    signal keycode_error : STD_LOGIC;
     
-    signal hash_in  : std_logic_vector (255 downto 0);
-    signal hash_out : std_logic_vector (255 downto 0);
+    signal hash_in  : STD_LOGIC_VECTOR (255 downto 0);
+    signal hash_out : STD_LOGIC_VECTOR (255 downto 0);
     
-    signal user_input : std_logic_vector (255 downto 0);
-    signal ckt_output : std_logic_vector (255 downto 0);
+    signal user_input : STD_LOGIC_VECTOR (255 downto 0);
+    signal ckt_output : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
     
-    signal ckt_mode : std_logic_vector (1 downto 0);
+    signal ckt_mode : STD_LOGIC_VECTOR (1 downto 0);
     
-    signal dmux_out : std_logic_vector (255 downto 0);
+    signal dmux_out : STD_LOGIC_VECTOR (255 downto 0);
 
 begin
 
     keyb: ps2_register port map
-        ( PS2_CLK => PS2_CLK,
-          PS2_DATA => PS2_DATA,
+        ( PS2_CLK        => PS2_CLK,
+          PS2_DATA       => PS2_DATA,
           PS2_CLEAR_DATA_READY => PS2_CLEAR_DATA_READY,
           PS2_DATA_READY => new_keycode,
-          PS2_KEYCODE => keycode,
-          PS2_ERROR => keycode_error);
+          PS2_KEYCODE    => keycode,
+          PS2_ERROR      => keycode_error);
     
     inmod: input_module port map
         ( NEW_KEYCODE => new_keycode,
-          KEYCODE => keycode,
-          EN => ckt_mode(1),
-          CLK => CLK,
-          RST => ckt_mode(0),
-          STRING_OUT => user_input);
+          KEYCODE     => keycode,
+          EN          => ckt_mode(0),
+          CLK         => CLK,
+          RST         => ckt_mode(1),
+          STRING_OUT  => user_input);
           
     outmod: output_module port map
-        ( CLK => CLK,
-          RST => ckt_mode(1),
+        ( CLK         => CLK,
+          RST         => ckt_mode(1),
           NEW_KEYCODE => new_keycode,
-          KEYCODE => keycode,
-          HASH_IN => user_input, -- directly from the user input register, include hash algorithm later
-          STRING_OUT => ckt_output);
+          KEYCODE     => keycode,
+          HASH_IN     => user_input, -- directly from the user input register, include hash algorithm later
+          STRING_OUT  => ckt_output);
 
     mfsm: mode_fsm port map
-        ( CLK => CLK,
-          RST => '0', -- add a circuit hard reset button later
+        ( CLK         => CLK,
+          RST         => '0', -- add a circuit hard reset button later
           NEW_KEYCODE => new_keycode,
-          KEYCODE => keycode,
+          KEYCODE     => keycode,
           MODE_ENABLE => ckt_mode);
 
     mdemux: mode_demux port map
-        ( USER_INPUT => user_input,
+        ( USER_INPUT  => user_input,
           HASH_OUTPUT => ckt_output,
           MODE_ENABLE => ckt_mode,
-          LCD_OUT => dmux_out);
+          LCD_OUT     => dmux_out);
           
     lcdd: lcd_driver port map
-        ( CLK => CLK,
-          DISPLAY => dmux_out,
-		  RS => RS,
-          RW => RW,
-          E => E,
+        ( CLK      => CLK,
+          DISPLAY  => dmux_out,
+		  RS       => RS,
+          RW       => RW,
+          E        => E,
           LCD_DATA => LCD_DATA);
 
 end Structural;

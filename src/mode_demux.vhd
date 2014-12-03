@@ -20,7 +20,7 @@ begin
     begin
         if(MODE_ENABLE = "10") then
             LCD_OUT <= USER_INPUT;
-        elsif(MODE_ENABLE = "00") then
+        elsif(MODE_ENABLE = "01") then
             LCD_OUT <= HASH_OUTPUT;
         else
             -- invalid state
@@ -29,4 +29,3 @@ begin
     end process mode_select;
 
 end Behavioral;
-
