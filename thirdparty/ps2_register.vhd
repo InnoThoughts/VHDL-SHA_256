@@ -27,7 +27,7 @@ entity PS2_REGISTER is
    PORT (
 	   PS2_DATA_READY,
       PS2_ERROR		      : out STD_LOGIC;  
-		PS2_KEY_CODE         : out STD_LOGIC_VECTOR(7 downto 0); 
+		PS2_KEYCODE         : out STD_LOGIC_VECTOR(7 downto 0); 
 		PS2_CLK              : inout STD_LOGIC;
 		PS2_DATA             : in STD_LOGIC;
       PS2_CLEAR_DATA_READY : in STD_LOGIC);
@@ -59,7 +59,7 @@ begin
                                    -- stop bit, start bit, and parity bit
 										
 
-	PS2_KEY_CODE	<= reg(8 downto 1);
+	PS2_KEYCODE	<= reg(8 downto 1);
 	PS2_DATA_READY <= not(reg(0));
 	
 	pauseKeyboard: process (reg(0), PS2_CLEAR_DATA_READY) is

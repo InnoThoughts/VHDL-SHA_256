@@ -20,9 +20,11 @@ architecture Behavioral of hex_decoder is
 begin
 
     decoder: process(HASH_IN)
+        variable input : STD_LOGIC_VECTOR (3 downto 0);
     begin
         for I in 0 to 63 loop
-            case HASH_IN((4*I+3) downto (4*I)) is
+            input := HASH_IN((4*I+3) downto (4*I));
+            case input is
                 when "0000" => hex_string ((8*I+7) downto 8*I) <= "00110000"; -- 0
                 when "0001" => hex_string ((8*I+7) downto 8*I) <= "00110001"; -- 1
                 when "0010" => hex_string ((8*I+7) downto 8*I) <= "00110010"; -- 2

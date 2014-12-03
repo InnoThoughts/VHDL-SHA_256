@@ -49,7 +49,7 @@ begin
                 when output_mode =>
                     if(KEYCODE = enter_code) then
                         NS <= input_mode;
-                        mode_output <= "01";
+                        MODE_ENABLE <= "01";
                     end if;
 
             end case;
