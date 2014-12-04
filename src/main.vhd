@@ -29,13 +29,11 @@ end main;
 
 architecture Structural of main is
 
-    component ps2_register is
-        PORT (       PS2_DATA : in  STD_LOGIC;
-         PS2_CLEAR_DATA_READY : in  STD_LOGIC;
-               PS2_DATA_READY : out STD_LOGIC;
-                    PS2_ERROR : out STD_LOGIC;  
-                  PS2_KEYCODE : out STD_LOGIC_VECTOR(7 downto 0); 
-                      PS2_CLK : inout STD_LOGIC);
+    component ps2_keyboard is
+        Port (     PS2_CLK : in  STD_LOGIC;
+                  PS2_DATA : in  STD_LOGIC;
+               NEW_KEYCODE : out STD_LOGIC;
+                   KEYCODE : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
     component input_module is
@@ -93,14 +91,12 @@ architecture Structural of main is
     signal dmux_out : STD_LOGIC_VECTOR (255 downto 0);
 
 begin
-
-    keyb: ps2_register port map
-        ( PS2_CLK        => PS2_CLK,
-          PS2_DATA       => PS2_DATA,
-          PS2_CLEAR_DATA_READY => PS2_CLEAR_DATA_READY,
-          PS2_DATA_READY => new_keycode,
-          PS2_KEYCODE    => keycode,
-          PS2_ERROR      => keycode_error);
+          
+    keyb: ps2_keyboard port map
+        ( PS2_CLK     => PS2_CLK,
+          PS2_DATA    => PS2_DATA,
+          NEW_KEYCODE => new_keycode,
+          KEYCODE     => keycode);
     
     inmod: input_module port map
         ( NEW_KEYCODE => new_keycode,

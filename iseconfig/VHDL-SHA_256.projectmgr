@@ -16,7 +16,7 @@
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_1 - line_register - Structural</ClosedNode>
-         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_map - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_mode - input_module - Structural</ClosedNode>
