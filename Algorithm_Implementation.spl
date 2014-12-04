@@ -1,5 +1,0 @@
-[Inputs]
-=message[255:0]=
-[Outputs]
-=digest[255:0]=
-[BiDir]
