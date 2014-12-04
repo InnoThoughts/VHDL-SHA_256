@@ -14,7 +14,7 @@ entity ps2_keyboard is
     Port (     PS2_CLK : in  STD_LOGIC;
               PS2_DATA : in  STD_LOGIC;
            NEW_KEYCODE : out STD_LOGIC;
-              KEYCODE : out  STD_LOGIC_VECTOR (7 downto 0));
+               KEYCODE : out  STD_LOGIC_VECTOR (7 downto 0));
 end ps2_keyboard;
 
 architecture Behavioral of ps2_keyboard is

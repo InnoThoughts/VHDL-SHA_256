@@ -1,0 +1,24 @@
+# Clock
+NET "clk" LOC = "B8";
+
+# LCD
+NET "RW" LOC = "R15";
+NET "RS" LOC = "M13";
+NET "E"  LOC = "R18";
+
+NET "LCD_DATA[7]" LOC = "M16";
+NET "LCD_DATA[6]" LOC = "M14";
+NET "LCD_DATA[5]" LOC = "L16";
+NET "LCD_DATA[4]" LOC = "K13";
+NET "LCD_DATA[3]" LOC = "M15";
+NET "LCD_DATA[2]" LOC = "L17";
+NET "LCD_DATA[1]" LOC = "K12";
+NET "LCD_DATA[0]" LOC = "L15";
+
+# Keyboard
+NET "PS2_DATA" LOC = "P11";
+NET "PS2_CLK" LOC = "R12";
+NET "PS2_CLK" CLOCK_DEDICATED_ROUTE = FALSE;
+
+# Debug
+NET "keycode_ready" LOC = "J14";

@@ -19,12 +19,13 @@ entity main is
                 -- KEYBOARD
                     PS2_CLK : inout STD_LOGIC;
                    PS2_DATA : in STD_LOGIC;
-       PS2_CLEAR_DATA_READY : in STD_LOGIC;
                      -- LCD
                          RS : out STD_LOGIC;
                          RW : out STD_LOGIC;
                           E : out STD_LOGIC;
-                   LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
+                   LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0);
+                   -- DEBUG
+              keycode_ready : out STD_LOGIC);
 end main;
 
 architecture Structural of main is
@@ -92,6 +93,8 @@ architecture Structural of main is
 
 begin
           
+    keycode_ready <= new_keycode;
+    
     keyb: ps2_keyboard port map
         ( PS2_CLK     => PS2_CLK,
           PS2_DATA    => PS2_DATA,
