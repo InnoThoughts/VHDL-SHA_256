@@ -18,6 +18,7 @@ entity memory_array is
     Port ( CHAR_IN : in  STD_LOGIC_VECTOR (7 downto 0);
                SEL : in  STD_LOGIC_VECTOR (31 downto 0);
                CLK : in  STD_LOGIC;
+               RST : in  STD_LOGIC;
             OUTPUT : out STD_LOGIC_VECTOR (255 downto 0));
 end memory_array;
 
@@ -27,6 +28,7 @@ architecture Structural of memory_array is
         Port ( CHAR_IN : in  STD_LOGIC_VECTOR (7 downto 0);
                    SEL : in  STD_LOGIC_VECTOR (15 downto 0);
                    CLK : in  STD_LOGIC;
+                   RST : in  STD_LOGIC;
                 OUTPUT : out STD_LOGIC_VECTOR (127 downto 0));
     end component;
 
@@ -36,12 +38,14 @@ begin
         CHAR_IN => CHAR_IN,
         SEL     => SEL (31 downto 16),
         CLK     => CLK,
+        RST     => RST,
         OUTPUT  => OUTPUT (255 downto 128));
     
     line_1: line_register port map (
         CHAR_IN => CHAR_IN,
         SEL     => SEL (15 downto 0),
         CLK     => CLK,
+        RST     => RST,
         OUTPUT  => OUTPUT (127 downto 0));
 
 end Structural;

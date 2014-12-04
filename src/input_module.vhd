@@ -32,6 +32,7 @@ architecture Structural of input_module is
         Port ( CHAR_IN : in  STD_LOGIC_VECTOR (7 downto 0);
                    SEL : in  STD_LOGIC_VECTOR (31 downto 0);
                    CLK : in  STD_LOGIC;
+                   RST : in  STD_LOGIC;
                 OUTPUT : out STD_LOGIC_VECTOR (255 downto 0));
     end component;
     
@@ -55,6 +56,7 @@ begin
         ( CHAR_IN => KEYCODE,
           SEL     => mem_sel_s,
           CLK     => CLK,
+          RST     => RST,
           OUTPUT  => STRING_OUT);
 
 end Structural;

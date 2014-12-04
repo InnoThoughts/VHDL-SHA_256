@@ -16,11 +16,16 @@
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
          <ClosedNode>/input_module - input_module_architecture C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|input_module.vhd/memory - memory_array - Structural/line_1 - line_register - Structural</ClosedNode>
-         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural/line_0 - line_register - Structural/word_1 - word_register - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural/line_0 - line_register - Structural/word_2 - word_register - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural/line_0 - line_register - Structural/word_3 - word_register - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/inmod - input_module - Structural/memory - memory_array - Structural/line_1 - line_register - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_map - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_mode - input_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/input_module - input_module - Structural</ClosedNode>
+         <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/outmod - output_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/output - output_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/output_mode - output_module - Structural</ClosedNode>
          <ClosedNode>/main - Structural C:|Users|Nate|Documents|GitHub|VHDL-SHA_256|src|main.vhd/sseg_dec - sseg_dec - my_sseg</ClosedNode>
@@ -85,13 +90,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Synthesize - XST</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000117000000010000000100000000000000000000000064ffffffff000000810000000000000001000001170000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Synthesize - XST</CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff0000000000000002000000eb0000005a01000000050100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>
@@ -143,5 +148,19 @@
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>Simulate Behavioral Model</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem/>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000128000000010000000100000000000000000000000064ffffffff000000810000000000000001000001280000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem/>
    </ItemView>
 </Project>
