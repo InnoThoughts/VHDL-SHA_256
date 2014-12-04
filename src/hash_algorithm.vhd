@@ -131,6 +131,9 @@ begin
 			h := h_original(7);
 
 	--Compression Function Main Loop
+	--Only the first iteration of the loop is implemented here because the NEXYS 2 board used in this project 
+		--could not supply adequate resources for running 64 iterations simultaneously. To generate a complete 
+		--hash, simply change the second index from 0 to 63.
 			compression_adjustments: for index1 in 0 to 0 loop
 				s1 := STD_LOGIC_VECTOR(rotate_right(unsigned(e), 6)) 
 							XOR STD_LOGIC_VECTOR(rotate_right(unsigned(e), 11)) 
