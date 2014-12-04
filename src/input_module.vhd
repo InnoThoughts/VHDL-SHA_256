@@ -11,7 +11,8 @@ entity input_module is
                     EN : in  STD_LOGIC;
                    CLK : in  STD_LOGIC;
                    RST : in  STD_LOGIC;
-            STRING_OUT : out STD_LOGIC_VECTOR (255 downto 0));
+            STRING_OUT : out STD_LOGIC_VECTOR (255 downto 0);
+            COUNT_OUT      : out STD_LOGIC_VECTOR (4 downto 0));
 end input_module;
 
 architecture Structural of input_module is
@@ -43,6 +44,8 @@ begin
         ( INCREMENT => NEW_KEYCODE,
           RST       => RST,
           COUNT     => count_s);
+          
+    COUNT_OUT <= count_s;
 
     mux: mux_5to32 port map
         ( ADDR => count_s,

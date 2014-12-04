@@ -74,15 +74,18 @@ begin
             if(lcd_busy = '0' AND lcd_enable = '0') then
             
                 lcd_enable <= '1';
-                if(char < 31) then
+                if(char <= 31) then
                     char := char + 1;
+                    
+                    --lcd_bus <= "10" & display (7 downto 0);
+                    lcd_bus <= "10" & display((8*(31-char)+7) downto (8*(31-char))); 
+                    -- 0 -> 255 : 248
+                    -- 1 -> 247 : 240
+                    -- ...
+                    -- 31 -> 7 : 0
+                else
+                    lcd_bus <= "0000000000";
                 end if;
-                
-                lcd_bus <= "10" & display((8*(31-char)+7) downto (8*(31-char))); 
-                -- 0 -> 255 : 248
-                -- 1 -> 247 : 240
-                -- ...
-                -- 31 -> 7 : 0
             else
                 lcd_enable <= '0';
             end if;

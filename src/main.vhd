@@ -25,7 +25,7 @@ entity main is
                           E : out STD_LOGIC;
                    LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0);
                    -- DEBUG
-              keycode_ready : out STD_LOGIC);
+                       count_led : out STD_LOGIC_VECTOR (4 downto 0));
 end main;
 
 architecture Structural of main is
@@ -43,7 +43,8 @@ architecture Structural of main is
                         EN : in  STD_LOGIC;
                        CLK : in  STD_LOGIC;
                        RST : in  STD_LOGIC;
-                STRING_OUT : out STD_LOGIC_VECTOR (255 downto 0));    
+                STRING_OUT : out STD_LOGIC_VECTOR (255 downto 0);
+                     COUNT_OUT : out STD_LOGIC_VECTOR (4 downto 0));    
     end component;
     
     component output_module is
@@ -81,6 +82,8 @@ architecture Structural of main is
     signal keycode       : STD_LOGIC_VECTOR (7 downto 0);
     signal keycode_error : STD_LOGIC;
     
+    signal count_out : STD_LOGIC_VECTOR (4 downto 0);
+    
     signal hash_in  : STD_LOGIC_VECTOR (255 downto 0);
     signal hash_out : STD_LOGIC_VECTOR (255 downto 0);
     
@@ -93,7 +96,7 @@ architecture Structural of main is
 
 begin
           
-    keycode_ready <= new_keycode;
+    count_led <= count_out;
     
     keyb: ps2_keyboard port map
         ( PS2_CLK     => PS2_CLK,
@@ -107,7 +110,8 @@ begin
           EN          => ckt_mode(0),
           CLK         => CLK,
           RST         => ckt_mode(1),
-          STRING_OUT  => user_input);
+          STRING_OUT  => user_input,
+          COUNT_OUT       => count_out);
           
     outmod: output_module port map
         ( CLK         => CLK,

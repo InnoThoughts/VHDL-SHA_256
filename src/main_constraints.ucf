@@ -21,4 +21,12 @@ NET "PS2_CLK" LOC = "R12";
 NET "PS2_CLK" CLOCK_DEDICATED_ROUTE = FALSE;
 
 # Debug
-NET "keycode_ready" LOC = "J14";
+#NET "keycode_ready" LOC = "J14";
+#NET "keyc[7]" LOC = "R4";
+#NET "keyc[6]" LOC = "F4";
+#NET "keyc[5]" LOC = "P15";
+NET "count_LED[4]" LOC = "E17";
+NET "count_led[3]" LOC = "K14";
+NET "count_led[2]" LOC = "K15";
+NET "count_led[1]" LOC = "J15";
+NET "count_led[0]" LOC = "J14";
