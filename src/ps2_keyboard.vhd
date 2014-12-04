@@ -19,7 +19,7 @@ end ps2_keyboard;
 
 architecture Behavioral of ps2_keyboard is
     signal BYTE_s : STD_LOGIC_VECTOR (10 downto 0) := (OTHERS => '1');
-    signal READY_s : STD_LOGIC := '0';
+    signal READY_s : STD_LOGIC := '1';
 begin
 
     ps2clkevent: process(PS2_CLK, PS2_DATA)

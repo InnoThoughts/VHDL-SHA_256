@@ -182,6 +182,7 @@ BEGIN
       --reset
       IF(reset_n = '0') THEN
           state <= power_up;
+          clk_count := 0;
       END IF;
     
     END IF;

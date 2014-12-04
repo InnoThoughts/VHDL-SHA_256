@@ -74,11 +74,12 @@ architecture Structural of main is
     component lcd_driver is
     Port (     CLK : in STD_LOGIC;
            DISPLAY : in STD_LOGIC_VECTOR (255 downto 0);
+               RST : in STD_LOGIC;
          RS, RW, E : out STD_LOGIC;
           LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
-    signal new_keycode   : STD_LOGIC;
+    signal new_keycode   : STD_LOGIC := '0';
     signal keycode       : STD_LOGIC_VECTOR (7 downto 0);
     signal keycode_error : STD_LOGIC;
     
@@ -137,6 +138,7 @@ begin
     lcdd: lcd_driver port map
         ( CLK      => CLK,
           DISPLAY  => dmux_out,
+          RST      => new_keycode,
 		  RS       => RS,
           RW       => RW,
           E        => E,

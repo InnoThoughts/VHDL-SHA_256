@@ -32,6 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity lcd_driver is
     Port (      CLK : in  STD_LOGIC;
             DISPLAY : in  STD_LOGIC_VECTOR (255 downto 0);
+                RST : in  STD_LOGIC;
                  RS : out STD_LOGIC;
                  RW : out STD_LOGIC;
                   E : out STD_LOGIC;
@@ -53,12 +54,12 @@ architecture Behavioral of lcd_driver is
     
     signal lcd_enable, lcd_busy : STD_LOGIC := '0';
     signal lcd_bus : STD_LOGIC_VECTOR (9 downto 0) := "0000000000";
-
+    
 begin
 
     lcd_control : lcd_controller PORT MAP(
         clk        => clk,
-        reset_n    => '1',
+        reset_n    => RST,
         lcd_enable => lcd_enable,
         lcd_bus    => lcd_bus, 
         busy       => lcd_busy,
@@ -66,16 +67,15 @@ begin
         rs         => rs,
         e          => e,
         lcd_data   => lcd_data);
-        
-    driver: process(CLK)
+    
+    driver: process(CLK, DISPLAY)
         variable char : INTEGER range 0 to 31 := 0;
     begin
         if(rising_edge(CLK)) then
             if(lcd_busy = '0' AND lcd_enable = '0') then
-            
+
                 lcd_enable <= '1';
                 if(char <= 31) then
-                    char := char + 1;
                     
                     --lcd_bus <= "10" & display (7 downto 0);
                     lcd_bus <= "10" & display((8*(31-char)+7) downto (8*(31-char))); 
@@ -83,8 +83,15 @@ begin
                     -- 1 -> 247 : 240
                     -- ...
                     -- 31 -> 7 : 0
+--                    if(char = 0) then
+--                        lcd_bus <= "1001000001";
+--                    else
+--                        lcd_bus <= "1000010000";
+--                    end if;
+                    
+                    char := char + 1;
                 else
-                    lcd_bus <= "0000000000";
+                    lcd_enable <= '0';
                 end if;
             else
                 lcd_enable <= '0';
