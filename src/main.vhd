@@ -19,13 +19,11 @@ entity main is
                 -- KEYBOARD
                     PS2_CLK : inout STD_LOGIC;
                    PS2_DATA : in STD_LOGIC;
-                     -- LCD
-                         RS : out STD_LOGIC;
-                         RW : out STD_LOGIC;
-                          E : out STD_LOGIC;
-                   LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0);
+           -- Seven Segment
+                     ANODES : out STD_LOGIC_VECTOR (3 downto 0);
+                   CATHODES : out STD_LOGIC_VECTOR (7 downto 0);
                    -- DEBUG
-                       count_led : out STD_LOGIC_VECTOR (4 downto 0));
+                  count_led : out STD_LOGIC_VECTOR (4 downto 0));
 end main;
 
 architecture Structural of main is
@@ -71,12 +69,11 @@ architecture Structural of main is
                 LCD_OUT : out STD_LOGIC_VECTOR (255 downto 0));
     end component;
 
-    component lcd_driver is
-    Port (     CLK : in STD_LOGIC;
-           DISPLAY : in STD_LOGIC_VECTOR (255 downto 0);
-               RST : in STD_LOGIC;
-         RS, RW, E : out STD_LOGIC;
-          LCD_DATA : out STD_LOGIC_VECTOR (7 downto 0));
+    component sseg_driver is
+    Port ( DISPLAY : in  STD_LOGIC_VECTOR (31 downto 0);
+           CLK : in  STD_LOGIC;
+           ANODES : out  STD_LOGIC_VECTOR (3 downto 0);
+           CATHODES : out  STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
     signal new_keycode   : STD_LOGIC := '0';
@@ -135,14 +132,11 @@ begin
           MODE_ENABLE => ckt_mode,
           LCD_OUT     => dmux_out);
           
-    lcdd: lcd_driver port map
-        ( CLK      => CLK,
-          DISPLAY  => dmux_out,
-          RST      => new_keycode,
-		  RS       => RS,
-          RW       => RW,
-          E        => E,
-          LCD_DATA => LCD_DATA);
+    sseg: sseg_driver port map
+        (  DISPLAY => user_input (255 downto 224),
+           CLK     => CLK,
+           ANODES  => ANODES,
+           CATHODES => CATHODES);
 
 end Structural;
 
