@@ -88,7 +88,7 @@ architecture Structural of main is
     
     signal user_input : STD_LOGIC_VECTOR (255 downto 0);
     signal saved_user_input : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
-    signal ckt_output : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
+    signal decoded_hex : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
     
     signal ckt_mode : STD_LOGIC_VECTOR (1 downto 0);
     
@@ -120,8 +120,8 @@ begin
           VAL_OUT => saved_user_input);
           
     decode: hex_decoder port map
-        ( HASH_IN => saved_user_input, -- directly from user_input for now
-          HASH_OUT => ckt_output (255 downto 224));
+        ( HASH_IN => saved_user_input, -- directly from saved_user_input for now
+          HASH_OUT => decoded_hex (255 downto 224));
 
     mfsm: mode_fsm port map
         ( CLK         => CLK,
@@ -132,7 +132,7 @@ begin
 
     mdemux: mode_demux port map
         ( USER_INPUT  => user_input,
-          HASH_OUTPUT => saved_user_input,
+          HASH_OUTPUT => decoded_hex,
           MODE_ENABLE => ckt_mode,
           LCD_OUT     => dmux_out);
           
