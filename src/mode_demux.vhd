@@ -18,9 +18,9 @@ begin
 
     mode_select: process(USER_INPUT, HASH_OUTPUT, MODE_ENABLE)
     begin
-        if(MODE_ENABLE = "10") then
+        if(MODE_ENABLE(0) = '1') then
             LCD_OUT <= USER_INPUT;
-        elsif(MODE_ENABLE = "01") then
+        elsif(MODE_ENABLE(1) = '1') then
             LCD_OUT <= HASH_OUTPUT;
         else
             -- invalid state

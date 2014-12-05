@@ -38,9 +38,8 @@ architecture Structural of input_module is
     
     signal count_s   : STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
     signal mem_sel_s : STD_LOGIC_VECTOR (31 downto 0);
-
+    
 begin
-
     count: counter_5b port map
         ( INCREMENT => NEW_KEYCODE,
           RST       => RST,

@@ -16,6 +16,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity main is
     Port (              CLK : in STD_LOGIC;
+                        BTN : in STD_LOGIC;
                 -- KEYBOARD
                     PS2_CLK : inout STD_LOGIC;
                    PS2_DATA : in STD_LOGIC;
@@ -45,13 +46,16 @@ architecture Structural of main is
                      COUNT_OUT : out STD_LOGIC_VECTOR (4 downto 0));    
     end component;
     
-    component output_module is
-        Port (         CLK : in  STD_LOGIC;
-                       RST : in  STD_LOGIC;
-               NEW_KEYCODE : in  STD_LOGIC;
-                   KEYCODE : in  STD_LOGIC_VECTOR (7 downto 0);
-                   HASH_IN : in  STD_LOGIC_VECTOR (255 downto 0);
-                STRING_OUT : OUT STD_LOGIC_VECTOR (255 downto 0));
+    component hex_decoder is
+        Port ( HASH_IN : in  STD_LOGIC_VECTOR (255 downto 0);
+               HASH_OUT : out STD_LOGIC_VECTOR (31 downto 0));
+    end component;
+    
+    component hash_mem is
+        Port ( VAL_IN : in  STD_LOGIC_VECTOR (255 downto 0);
+               CLK : in  STD_LOGIC;
+               EN : in  STD_LOGIC;
+               VAL_OUT : out STD_LOGIC_VECTOR (255 downto 0));
     end component;
     
     component mode_fsm is
@@ -82,10 +86,8 @@ architecture Structural of main is
     
     signal count_out : STD_LOGIC_VECTOR (4 downto 0);
     
-    signal hash_in  : STD_LOGIC_VECTOR (255 downto 0);
-    signal hash_out : STD_LOGIC_VECTOR (255 downto 0);
-    
     signal user_input : STD_LOGIC_VECTOR (255 downto 0);
+    signal saved_user_input : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
     signal ckt_output : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
     
     signal ckt_mode : STD_LOGIC_VECTOR (1 downto 0);
@@ -111,29 +113,31 @@ begin
           STRING_OUT  => user_input,
           COUNT_OUT       => count_out);
           
-    outmod: output_module port map
-        ( CLK         => CLK,
-          RST         => ckt_mode(1),
-          NEW_KEYCODE => new_keycode,
-          KEYCODE     => keycode,
-          HASH_IN     => user_input, -- directly from the user input register, include hash algorithm later
-          STRING_OUT  => ckt_output);
+    hmem: hash_mem port map
+        ( VAL_IN => user_input,
+          CLK     => CLK,
+          EN      => BTN,
+          VAL_OUT => saved_user_input);
+          
+    decode: hex_decoder port map
+        ( HASH_IN => saved_user_input, -- directly from user_input for now
+          HASH_OUT => ckt_output (255 downto 224));
 
     mfsm: mode_fsm port map
         ( CLK         => CLK,
-          RST         => '0', -- add a circuit hard reset button later
+          RST         => '0',
           NEW_KEYCODE => new_keycode,
           KEYCODE     => keycode,
           MODE_ENABLE => ckt_mode);
 
     mdemux: mode_demux port map
         ( USER_INPUT  => user_input,
-          HASH_OUTPUT => ckt_output,
+          HASH_OUTPUT => saved_user_input,
           MODE_ENABLE => ckt_mode,
           LCD_OUT     => dmux_out);
           
     sseg: sseg_driver port map
-        (  DISPLAY => user_input (255 downto 224),
+        (  DISPLAY => dmux_out (255 downto 224),
            CLK     => CLK,
            ANODES  => ANODES,
            CATHODES => CATHODES);

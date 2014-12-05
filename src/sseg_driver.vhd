@@ -33,20 +33,20 @@ begin
         if(rising_edge(sclk)) then
             case state is
                 when one =>
-                    ANODES <= "0111";
-                    CATHODES <= DISPLAY (31 downto 24);--"01010101";
+                    ANODES <= "1110";
+                    CATHODES <= DISPLAY (31 downto 24);
                     state <= two;
                 when two =>
-                    ANODES <= "1011";
-                    CATHODES <= DISPLAY (23 downto 16);--"11110000";
+                    ANODES <= "1101";
+                    CATHODES <= DISPLAY (23 downto 16);
                     state <= three;
                 when three =>
-                    ANODES <= "1101";
-                    CATHODES <= DISPLAY (15 downto 8);--"00001111";
+                    ANODES <= "1011";
+                    CATHODES <= DISPLAY (15 downto 8);
                     state <= four;
                 when four =>
-                    ANODES <= "1110";
-                    CATHODES <= DISPLAY (7 downto 0);--"00000000";
+                    ANODES <= "0111";
+                    CATHODES <= DISPLAY (7 downto 0);
                     state <= one;
              end case;
          end if;

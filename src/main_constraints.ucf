@@ -1,6 +1,8 @@
 # Clock
 NET "clk" LOC = "B8";
 
+NET "BTN" LOC = "H13";
+
 # LCD
 #NET "RW" LOC = "R15";
 #NET "RS" LOC = "M13";
