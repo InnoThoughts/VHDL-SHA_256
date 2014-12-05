@@ -46,6 +46,11 @@ architecture Structural of main is
                      COUNT_OUT : out STD_LOGIC_VECTOR (4 downto 0));    
     end component;
     
+    component sha_256 is
+        Port ( message : in  STD_LOGIC_VECTOR (255 downto 0);
+               digest : out  STD_LOGIC_VECTOR (255 downto 0));
+    end component;
+    
     component hex_decoder is
         Port ( HASH_IN : in  STD_LOGIC_VECTOR (255 downto 0);
                HASH_OUT : out STD_LOGIC_VECTOR (31 downto 0));
@@ -88,6 +93,7 @@ architecture Structural of main is
     
     signal user_input : STD_LOGIC_VECTOR (255 downto 0);
     signal saved_user_input : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
+    signal hash_output : STD_LOGIC_VECTOR (255 downto 0);
     signal decoded_hex : STD_LOGIC_VECTOR (255 downto 0) := (OTHERS => '0');
     
     signal ckt_mode : STD_LOGIC_VECTOR (1 downto 0);
@@ -119,8 +125,12 @@ begin
           EN      => BTN,
           VAL_OUT => saved_user_input);
           
+    sha: sha_256 port map
+        ( message => saved_user_input,
+          digest => hash_output);
+          
     decode: hex_decoder port map
-        ( HASH_IN => saved_user_input, -- directly from saved_user_input for now
+        ( HASH_IN => hash_output,
           HASH_OUT => decoded_hex (255 downto 224));
 
     mfsm: mode_fsm port map
